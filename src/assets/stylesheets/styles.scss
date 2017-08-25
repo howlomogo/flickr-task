@@ -1,0 +1,15 @@
+@import 'photos';
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+
+$brand-purple: rgb(135,140,223);
+
+$merriweather: "Merriweather", sans-serif;
+
+.test {
+	display: flex;
+}
+
+body {
+	background-color: $brand-purple;
+	font-family: $merriweather;
+}
