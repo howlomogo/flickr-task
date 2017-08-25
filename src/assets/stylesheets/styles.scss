@@ -1,15 +1,77 @@
-@import 'photos';
-@import url('https://fonts.googleapis.com/css?family=Merriweather');
+$color--primary: #FFC107;
+$color--text: #2C2C2C;
+$color--para: #8D8D8D;
+$color--grey-light: #BDBDBD;
+$color--grey-lighter: #EEEEEE;
 
-$brand-purple: rgb(135,140,223);
 
-$merriweather: "Merriweather", sans-serif;
-
-.test {
-	display: flex;
-}
+@import 'bootstrap';
+@import './components/filter';
+@import './components/photos';
 
 body {
-	background-color: $brand-purple;
-	font-family: $merriweather;
+	color: $color--text;
+}
+h1,h2, h3,h4,h5,h6 {
+	font-family: 'Lato', sans-serif;
+	line-height: normal;
+}
+
+p,a {
+	font-family: 'Source Sans Pro', sans-serif;
+	line-height: normal;
+	color: $color--para;
+}
+
+p {
+	font-weight: 300;
+	letter-spacing: 0.5;
+	line-height: 1.35rem;
+}
+
+h1 {
+	font-size: 4rem;
+	font-weight: 700;
+	letter-spacing: 2px;
+	@media (max-width: 992px) {
+		line-height: normal !important;
+		font-size: 3rem;
+	}
+	@media (max-width: 768px) {
+		line-height: normal !important;
+		font-size: 2rem;
+	}
+}
+
+h2 {
+	font-size: 3rem;
+	font-weight: 700;
+	letter-spacing: 3px;
+	@media (max-width: 768px) {
+		font-size: 1.75rem;
+	}
+}
+
+h3 {
+	@media (max-width: 768px) {
+		font-size: 1.5rem;
+	}
+}
+
+h4 {
+	@media (max-width: 768px) {
+		font-size: 1.25rem;
+	}
+}
+
+.color--primary {
+	color: $color--primary !important;
+}
+
+.hr {
+	border: none;
+	border-top: 1px solid $color--grey-lighter;
+	display: block;
+	width: 100%;
+	margin: 0px;
 }

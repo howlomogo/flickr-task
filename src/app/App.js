@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 
 // Components
+import Header from './components/Header';
 import PhotoList from './components/PhotoList';
+import DevHelper from './components/DevHelper';
+import Filter from './components/Filter';
 
 class App extends Component {
 	constructor() {
@@ -11,20 +14,13 @@ class App extends Component {
 			photos: []
 		}
 		this.getFlickrImages = this.getFlickrImages.bind(this);
-		this.showProps = this.showProps.bind(this);
 	}
 
 	componentDidMount() {
 		this.getFlickrImages('skateboarding');
 	}
 
-	showProps() {
-		console.log(this.state);
-	}
-
-	// tags
 	getFlickrImages(tags) {
-
 		const flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
 
 		let state = this;
@@ -43,15 +39,18 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="container someclass">
-				<div className="row">
-					<PhotoList state={this.state} />
+			<div>
+				<Header />
+				<Filter
+					getFlickrImages={this.getFlickrImages}
+				/>
 
+				<PhotoList state={this.state} />
 
-					<div id="images"></div>
-					<button onClick={this.showProps.bind(this)}>Show props</button>
-					<button onClick={() => this.getFlickrImages('snowboarding')}>Get snowboard images</button>
-				</div>
+				<DevHelper
+					state={this.state}
+					getFlickrImages={this.getFlickrImages}
+				/>
 			</div>
 		)
 	}

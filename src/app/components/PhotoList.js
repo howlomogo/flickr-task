@@ -20,8 +20,10 @@ class PhotoList extends Component {
     })
 
     return(
-      <div>
-        {photosList}
+      <div className="container">
+        <div className="row">
+          {photosList}
+        </div>
       </div>
     )
   }

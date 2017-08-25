@@ -25,7 +25,7 @@ class FlickrImage extends Component {
     const tags = this.props.photo.tags.split(' ');
     const tagList = tags.map((tag) => {
       return(
-        <h6 key={tag}>{tag}</h6>
+        <div className="photo--tag" key={tag}>{tag}</div>
       )
     })
 
@@ -38,7 +38,9 @@ class FlickrImage extends Component {
               {this.props.photo.title}
             </a>
           </span>
-          &nbsp; by &nbsp;
+        </h5>
+        <h5>
+          by &nbsp;
           <span>
             <a href={this.getAuthorLink(this.props.photo.link)} target='_blank'>
               {this.getAuthor(this.props.photo.author)}
@@ -48,7 +50,13 @@ class FlickrImage extends Component {
         <p>
           Description: Description of the image
         </p>
-          Tags: {tagList}
+        <h5>
+          Tags:
+        </h5>
+        <hr />
+        <div className="photo--tag-container">
+          {tagList}          
+        </div>
       </div>
     )
   }
