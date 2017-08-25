@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 
 // Components
-import FlickrImage from './components/FlickrImage';
+import PhotoList from './components/PhotoList';
 
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			items: []
+			photos: []
 		}
 		this.getFlickrImages = this.getFlickrImages.bind(this);
 		this.showProps = this.showProps.bind(this);
@@ -35,7 +35,7 @@ class App extends Component {
 		})
 		.done(function( data ) {
 			state.setState({
-				items: data.items
+				photos: data.items
 			})
 		});
 	}
@@ -45,12 +45,12 @@ class App extends Component {
 		return (
 			<div className="container someclass">
 				<div className="row">
-					<FlickrImage />
+					<PhotoList state={this.state} />
 
 
 					<div id="images"></div>
 					<button onClick={this.showProps.bind(this)}>Show props</button>
-					<button onClick={this.getFlickrImages('snowboarding')}>Get snowboard images</button>
+					<button onClick={() => this.getFlickrImages('snowboarding')}>Get snowboard images</button>
 				</div>
 			</div>
 		)

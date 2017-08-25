@@ -1,4 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Merriweather);.test {
+@import url(https://fonts.googleapis.com/css?family=Merriweather);.flickr--box {
+  width: 300px; }
+  .flickr--box img {
+    max-width: 100%;
+    max-height: 200px; }
+
+.test {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }

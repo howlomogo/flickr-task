@@ -1,8 +1,11 @@
-.flickr--box {
+.photo--container {
+  display: inline-block;
   width: 300px;
+  padding: 16px;
+  margin: 16px;
+  background-color: #f5f5f5;
 
-  img {
-    max-width: 100%;
-    max-height: 200px;
+  .photo--img {
+    width: 100%;
   }
 }
