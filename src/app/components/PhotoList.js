@@ -10,11 +10,12 @@ class PhotoList extends Component {
   }
 
   render() {
-    const photosList = this.props.state.photos.map((photo) => {
+    const photosList = this.props.appState.photos.map((photo) => {
       return(
         <FlickrImage
           key={photo.link}
           photo={photo}
+          getFlickrImages={this.props.getFlickrImages}
         />
       )
     })

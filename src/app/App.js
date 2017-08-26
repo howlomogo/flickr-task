@@ -11,27 +11,37 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			photos: []
+			photos: [],
+			searchedTag: 'themepark'
 		}
 		this.getFlickrImages = this.getFlickrImages.bind(this);
 	}
 
 	componentDidMount() {
-		this.getFlickrImages('themepark');
+		this.getFlickrImages(this.state.searchedTag);
 	}
 
-	getFlickrImages(tags) {
+	// tag to search for, should page navigate to searchbar
+	getFlickrImages(tag, moveTop) {
+		if(moveTop) {
+				var $target = $('#top');
+				$('html, body').stop().animate({
+					'scrollTop': $target.offset().top
+				}, 200, 'swing');
+		}
+
 		const flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
 
 		let state = this;
 		$.getJSON( flickrAPI, {
-			tags: tags,
+			tags: tag,
 			tagmode: "any",
 			format: "json"
 		})
 		.done(function( data ) {
 			state.setState({
-				photos: data.items
+				photos: data.items,
+				searchedTag: tag
 			})
 		});
 	}
@@ -42,15 +52,18 @@ class App extends Component {
 			<div>
 				<Header />
 				<Filter
+					appState={this.state}
 					getFlickrImages={this.getFlickrImages}
 				/>
 
-				<PhotoList state={this.state} />
+				<PhotoList
+					appState={this.state}
+					getFlickrImages={this.getFlickrImages}
+				/>
 
-				<DevHelper
+				{/* <DevHelper
 					state={this.state}
-					getFlickrImages={this.getFlickrImages}
-				/>
+				/> */}
 			</div>
 		)
 	}

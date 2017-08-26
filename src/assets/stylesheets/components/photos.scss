@@ -36,20 +36,27 @@
   display: inline-block;
   font-size: 0.75rem;
   border-radius: 0.25rem;
+  word-break: break-all;
+  transition: background-color 0.3s;
+	cursor: pointer;
+
+	&:hover {
+		background-color: lighten($color--primary,10%);
+	}
 }
 
 .photo--font-title {
   font-size: 1rem;
   text-decoration: none;
   @extend .mb-1;
-  word-break: break-all;
+  overflow-wrap: break-word
 }
 
 .photo--font-author {
   font-size: 0.75rem;
   text-decoration: none;
   @extend .mb-1;
-  word-break: break-all;
+  overflow-wrap: break-word
 }
 
 .photo--font-description {

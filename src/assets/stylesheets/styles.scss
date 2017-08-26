@@ -31,6 +31,10 @@ p,a {
 	display: block;
 }
 
+input, button, label {
+	font-family: 'Lato', sans-serif;
+}
+
 p {
 	font-weight: 300;
 	letter-spacing: 0.5;
@@ -107,7 +111,16 @@ h6 {
 	margin: 0px;
 }
 
+
 .btn--primary {
 	color: #ffffff;
 	background-color: $color--primary;
+	letter-spacing: 1px;
+	font-weight: 300;
+	transition: background-color 0.3s;
+	cursor: pointer;
+
+	&:hover {
+		background-color: lighten($color--primary,10%);
+	}
 }

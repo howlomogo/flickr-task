@@ -20,8 +20,9 @@ class Filter extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.getFlickrImages(this.state.searchTerm);
-    // Do search
+    this.props.getFlickrImages(this.state.searchTerm, false);
+
+    // Reset searchTerm
     this.setState({
       searchTerm: ''
     })
@@ -34,26 +35,27 @@ class Filter extends Component {
           <div className="row align-items-center py-4">
             <div className="col-md-12">
               <form className="form-inline filter--form" onSubmit={this.handleSubmit}>
-                <div className="input-group mr-4">
-                  <label className="mr-1">Search By Tag: </label>
-                  <input type="text" className="form-control filter--search-input" placeholder="Search for..." onChange={this.searchFilter} value={this.state.searchTerm} />
+                <div className="input-group">
+                  {/* <label className="mr-1">Search By Tag: </label> */}
+                  <input type="text" className="form-control filter--search-input" placeholder="Search by tag" onChange={this.searchFilter} value={this.state.searchTerm} />
                   <span className="input-group-btn">
                     <button className="btn btn--primary" type='submit' value='Search'>Search</button>
                   </span>
                 </div>
 
-                <div className="input-group">
+                { /* Cannot search api by title */ }
+                {/* <div className="input-group">
                   <label className="mr-1">Search By Title: </label>
                   <input type="text" className="form-control filter--search-input" placeholder="Search for..." onChange={this.searchFilter} value={this.state.searchTerm} />
                   <span className="input-group-btn">
                     <button className="btn btn--primary" type='submit' value='Search'>Search</button>
                   </span>
-                </div>
+                </div> */}
 
               </form>
             </div>
             <div className="col-md-12">
-              <p className="text-center mb-0">Searching for photos based on tags: 'the tag'</p>
+              <p className="text-center mb-0">Searching for photos based on tag: {this.props.appState.searchedTag}</p>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ class Header extends Component {
 
   render() {
     return(
-      <div className="container--fluid text-center">
+      <div id="top" className="container--fluid text-center">
           <div className="banner--container">
             {/* <img className="banner--img" src={bannerimg} alt=""/> */}
             <div className="banner--overlay"></div>

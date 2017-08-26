@@ -5,6 +5,7 @@ class FlickrImage extends Component {
     super();
     this.getAuthor = this.getAuthor.bind(this);
     this.getAuthorLink = this.getAuthorLink.bind(this);
+    this.getDescription = this.getDescription.bind(this);
   }
 
   getAuthor(author) {
@@ -20,12 +21,22 @@ class FlickrImage extends Component {
     return 'https://www.flickr.com/photos/' + authorLink;
   }
 
+  // *** This function will return a description of the image, however I have commented it out as the returned JSON flickr api data isn't consistant and there is no reliable way of getting the description based off of this ***
+  getDescription(descriptionObj) {
+    // Uncomment to view inconsistencies
+    // const descStart = descriptionObj.lastIndexOf('<p>');
+    // const description = descriptionObj.slice(descStart + 3, descriptionObj.length - 4);
+
+    const description = 'A dummy description of the Flickr image, please view FlickrImage.js to see reasoning for using this here.'
+    return description;
+  }
+
 
   render() {
     const tags = this.props.photo.tags.split(' ');
     const tagList = tags.map((tag) => {
       return(
-        <div className="photo--tag" key={tag}>{tag}</div>
+        <div onClick={() => this.props.getFlickrImages(tag, true)} className="photo--tag" key={tag}>{tag}</div>
       )
     })
 
@@ -43,7 +54,7 @@ class FlickrImage extends Component {
           </a>
 
           <p className="photo--font-description">
-            Description: {this.props.photo.decription}
+            Description: {this.getDescription(this.props.photo.description)}
           </p>
           <p className="photo--font-tag">
             Tags:

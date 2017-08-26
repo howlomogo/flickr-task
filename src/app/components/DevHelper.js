@@ -10,12 +10,11 @@ class DevHelper extends Component {
   showProps() {
 		console.log(this.props.state);
 	}
-  
+
   render() {
     return(
       <div>
         <button onClick={this.showProps.bind(this)}>Show props</button>
-        <button onClick={() => this.props.getFlickrImages('snowboarding')}>Get snowboard images</button>
       </div>
     )
   }
