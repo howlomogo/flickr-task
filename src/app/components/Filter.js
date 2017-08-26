@@ -14,8 +14,6 @@ class Filter extends Component {
   searchFilter(event) {
     this.setState({
       searchTerm: event.target.value
-    }, function() {
-      console.log(this.state.searchTerm);
     })
   }
 
@@ -31,25 +29,32 @@ class Filter extends Component {
 
   render() {
     return(
-      <div className="container">
-        <div className="row align-items-center py-4">
-          <div className="col-md-12 mb-2">
-            <hr className="hr" />
-          </div>
-          <div className="col-md-6">
-            <form className="form-inline" onSubmit={this.handleSubmit}>
-              <div className="input-group mr-2">
-                <label className="mr-2">Search By Tag: </label>
-                <input className="form-control" type="text" onChange={this.searchFilter} value={this.state.searchTerm} />
-              </div>
-              <input className="btn btn-success" type='submit' value='Search' />
-            </form>
-          </div>
-          <div className="col-md-6">
-            <p className="text-right mb-0">Searching for photos based on tags: 'the tag'</p>
-          </div>
-          <div className="col-md-12 mt-2">
-            <hr className="hr" />
+      <div className="filter--container">
+        <div className="container">
+          <div className="row align-items-center py-4">
+            <div className="col-md-12">
+              <form className="form-inline filter--form" onSubmit={this.handleSubmit}>
+                <div className="input-group mr-4">
+                  <label className="mr-1">Search By Tag: </label>
+                  <input type="text" className="form-control filter--search-input" placeholder="Search for..." onChange={this.searchFilter} value={this.state.searchTerm} />
+                  <span className="input-group-btn">
+                    <button className="btn btn--primary" type='submit' value='Search'>Search</button>
+                  </span>
+                </div>
+
+                <div className="input-group">
+                  <label className="mr-1">Search By Title: </label>
+                  <input type="text" className="form-control filter--search-input" placeholder="Search for..." onChange={this.searchFilter} value={this.state.searchTerm} />
+                  <span className="input-group-btn">
+                    <button className="btn btn--primary" type='submit' value='Search'>Search</button>
+                  </span>
+                </div>
+
+              </form>
+            </div>
+            <div className="col-md-12">
+              <p className="text-center mb-0">Searching for photos based on tags: 'the tag'</p>
+            </div>
           </div>
         </div>
       </div>

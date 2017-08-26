@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-
+// import bannerimg from 'images/bannerimg.jpg';
 class Header extends Component {
 
   render() {
     return(
-      <div className="container text-center">
-        <div className="row pt-4 pb-2">
-          <div className="col-md-12">
-            <h1>FLICKR PHOTO STREAM</h1>            
-          </div>
+      <div className="container--fluid text-center">
+          <div className="banner--container">
+            {/* <img className="banner--img" src={bannerimg} alt=""/> */}
+            <div className="banner--overlay"></div>
+            <h1 className="banner--text">FLICKR PHOTO STREAM</h1>
         </div>
       </div>
     )

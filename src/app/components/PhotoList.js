@@ -25,8 +25,8 @@ class PhotoList extends Component {
         <div className="row">
           <div className="col-md-12">
             <Masonry
-                className={'my-gallery-class'} // default ''
-                elementType={'div'} // default 'div'
+                className={'masonry--container'}
+                elementType={'div'}
                 disableImagesLoaded={false} // default false
                 updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
             >

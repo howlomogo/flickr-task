@@ -1,0 +1,34 @@
+.banner--container {
+  height: 300px;
+  position: relative;
+  background-image: url('../images/bannerimg.jpg');
+  background-size: cover;
+
+  @media (max-width: 768px) {
+    height: 260px;
+	}
+  @media (max-width: 576px) {
+    height: 220px;
+  }
+}
+
+.banner--overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0,0,0, 0.3);
+}
+
+.banner--text {
+  color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 0px;
+  @extend .p-2;
+}

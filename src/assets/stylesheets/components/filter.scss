@@ -1,4 +1,18 @@
 .filter--container {
-  border-top: 1px solid $color--grey-lighter;
-  border-bottom: 1px solid $color--grey-lighter;
+  background-color: #ffffff;
+
+  p {
+    font-style: italic;
+  }
+}
+
+.filter--form {
+  justify-content: center;
+  @extend .mb-3;
+}
+
+.filter--search-input {
+  border-radius: 0.25rem !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }

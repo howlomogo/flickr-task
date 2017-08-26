@@ -1,16 +1,20 @@
-$color--primary: #FFC107;
+$color--primary: #2196F3;
 $color--text: #2C2C2C;
 $color--para: #8D8D8D;
+
+$color--grey--100: #F5F5F5;
 $color--grey-light: #BDBDBD;
 $color--grey-lighter: #EEEEEE;
 
 
 @import 'bootstrap';
+@import './components/header';
 @import './components/filter';
 @import './components/photos';
 
 body {
 	color: $color--text;
+	background-color: $color--grey--100;
 }
 h1,h2, h3,h4,h5,h6 {
 	font-family: 'Lato', sans-serif;
@@ -30,7 +34,7 @@ p {
 }
 
 h1 {
-	font-size: 4rem;
+	font-size: 3.5rem;
 	font-weight: 700;
 	letter-spacing: 2px;
 	@media (max-width: 992px) {
@@ -38,7 +42,6 @@ h1 {
 		font-size: 3rem;
 	}
 	@media (max-width: 768px) {
-		line-height: normal !important;
 		font-size: 2rem;
 	}
 }
@@ -74,4 +77,9 @@ h4 {
 	display: block;
 	width: 100%;
 	margin: 0px;
+}
+
+.btn--primary {
+	color: #ffffff;
+	background-color: $color--primary;
 }
