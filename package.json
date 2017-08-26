@@ -13,6 +13,7 @@
   "dependencies": {
     "jquery": "^3.2.1",
     "jsonp": "^0.2.1",
+    "react-masonry-component": "^5.0.7",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1"
   },

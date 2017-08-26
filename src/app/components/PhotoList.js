@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Masonry from 'react-masonry-component';
 
 // Components
 import FlickrImage from './FlickrImage';
@@ -23,7 +24,14 @@ class PhotoList extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            {photosList}            
+            <Masonry
+                className={'my-gallery-class'} // default ''
+                elementType={'div'} // default 'div'
+                disableImagesLoaded={false} // default false
+                updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
+            >
+              {photosList}
+            </Masonry>
           </div>
         </div>
       </div>
