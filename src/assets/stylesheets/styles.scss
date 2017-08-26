@@ -3,8 +3,11 @@ $color--text: #2C2C2C;
 $color--para: #8D8D8D;
 
 $color--grey--100: #F5F5F5;
+$color--grey--200: #EEEEEE;
+
+$color--grey--900: #212121;
+
 $color--grey-light: #BDBDBD;
-$color--grey-lighter: #EEEEEE;
 
 
 @import 'bootstrap';
@@ -13,7 +16,7 @@ $color--grey-lighter: #EEEEEE;
 @import './components/photos';
 
 body {
-	color: $color--text;
+	color: $color--grey--900;
 	background-color: $color--grey--100;
 }
 h1,h2, h3,h4,h5,h6 {
@@ -22,9 +25,10 @@ h1,h2, h3,h4,h5,h6 {
 }
 
 p,a {
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Lato', sans-serif;
 	line-height: normal;
-	color: $color--para;
+	color: $color--grey--900;
+	display: block;
 }
 
 p {
@@ -49,21 +53,45 @@ h1 {
 h2 {
 	font-size: 3rem;
 	font-weight: 700;
-	letter-spacing: 3px;
+	letter-spacing: 2px;
 	@media (max-width: 768px) {
 		font-size: 1.75rem;
 	}
 }
 
 h3 {
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: 2px;
 	@media (max-width: 768px) {
 		font-size: 1.5rem;
 	}
 }
 
 h4 {
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: 2px;
 	@media (max-width: 768px) {
 		font-size: 1.25rem;
+	}
+}
+
+h5 {
+	font-size: 1.5rem;
+	font-weight: 700;
+	letter-spacing: 2px;
+	@media (max-width: 768px) {
+		font-size: 1rem;
+	}
+}
+
+h6 {
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: 2px;
+	@media (max-width: 768px) {
+		font-size: 0.75rem;
 	}
 }
 
@@ -73,7 +101,7 @@ h4 {
 
 .hr {
 	border: none;
-	border-top: 1px solid $color--grey-lighter;
+	border-top: 1px solid $color--grey--200;
 	display: block;
 	width: 100%;
 	margin: 0px;

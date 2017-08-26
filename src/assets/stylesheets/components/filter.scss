@@ -1,5 +1,6 @@
 .filter--container {
   background-color: #ffffff;
+  @extend .mb-3;
 
   p {
     font-style: italic;

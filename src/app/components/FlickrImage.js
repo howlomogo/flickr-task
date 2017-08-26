@@ -32,30 +32,26 @@ class FlickrImage extends Component {
     return(
       <div className="photo--container">
         <img className="photo--img" src={this.props.photo.media.m} />
-        <h5>
-          <span>
-            <a href={this.props.photo.link} target='_blank'>
-              {this.props.photo.title}
-            </a>
-          </span>
-        </h5>
-        <h5>
-          by &nbsp;
-          <span>
-            <a href={this.getAuthorLink(this.props.photo.link)} target='_blank'>
-              {this.getAuthor(this.props.photo.author)}
-            </a>
-          </span>
-        </h5>
-        <p>
-          Description: Description of the image
-        </p>
-        <h5>
-          Tags:
-        </h5>
-        <hr />
-        <div className="photo--tag-container">
-          {tagList}          
+        <div className="photo--content-container">
+          <a className="photo--font-title" href={this.props.photo.link} target='_blank'>
+            {this.props.photo.title}
+          </a>
+
+
+          <a className="photo--font-author" href={this.getAuthorLink(this.props.photo.link)} target='_blank'>
+            by: {this.getAuthor(this.props.photo.author)}
+          </a>
+
+          <p className="photo--font-description">
+            Description: {this.props.photo.decription}
+          </p>
+          <p className="photo--font-tag">
+            Tags:
+          </p>
+          <hr />
+          <div className="photo--tag-container">
+            {tagList}
+          </div>
         </div>
       </div>
     )

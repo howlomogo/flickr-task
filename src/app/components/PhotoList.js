@@ -10,7 +10,6 @@ class PhotoList extends Component {
   }
 
   render() {
-
     const photosList = this.props.state.photos.map((photo) => {
       return(
         <FlickrImage
@@ -20,6 +19,11 @@ class PhotoList extends Component {
       )
     })
 
+    // fitWidth + margin auto for centered items
+    const masonryOptions = {
+      fitWidth: true
+    }
+
     return(
       <div className="container">
         <div className="row">
@@ -27,8 +31,9 @@ class PhotoList extends Component {
             <Masonry
                 className={'masonry--container'}
                 elementType={'div'}
-                disableImagesLoaded={false} // default false
-                updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
+                options={masonryOptions}
+                disableImagesLoaded={false}
+                updateOnEachImageLoad={false}
             >
               {photosList}
             </Masonry>
