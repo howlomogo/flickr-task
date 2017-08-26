@@ -6,7 +6,9 @@ class Header extends Component {
     return(
       <div className="container text-center">
         <div className="row pt-4 pb-2">
-          <h1>FLICKR PHOTO STREAM</h1>
+          <div className="col-md-12">
+            <h1>FLICKR PHOTO STREAM</h1>            
+          </div>
         </div>
       </div>
     )

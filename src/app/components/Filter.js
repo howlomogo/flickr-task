@@ -32,15 +32,25 @@ class Filter extends Component {
   render() {
     return(
       <div className="container">
-        <div className="row py-4 filter--container">
-          <form className="form-inline" onSubmit={this.handleSubmit}>
-            <div className="input-group mr-2">
-              <label className="mr-2">Search By Tag: </label>
-              <input className="form-control" type="text" onChange={this.searchFilter} value={this.state.searchTerm} />
-            </div>
-
-            <input className="btn btn-success" type='submit' value='Search' />
-          </form>
+        <div className="row align-items-center py-4">
+          <div className="col-md-12 mb-2">
+            <hr className="hr" />
+          </div>
+          <div className="col-md-6">
+            <form className="form-inline" onSubmit={this.handleSubmit}>
+              <div className="input-group mr-2">
+                <label className="mr-2">Search By Tag: </label>
+                <input className="form-control" type="text" onChange={this.searchFilter} value={this.state.searchTerm} />
+              </div>
+              <input className="btn btn-success" type='submit' value='Search' />
+            </form>
+          </div>
+          <div className="col-md-6">
+            <p className="text-right mb-0">Searching for photos based on tags: 'the tag'</p>
+          </div>
+          <div className="col-md-12 mt-2">
+            <hr className="hr" />
+          </div>
         </div>
       </div>
     )

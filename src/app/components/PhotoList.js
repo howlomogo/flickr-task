@@ -22,7 +22,9 @@ class PhotoList extends Component {
     return(
       <div className="container">
         <div className="row">
-          {photosList}
+          <div className="col-md-12">
+            {photosList}            
+          </div>
         </div>
       </div>
     )

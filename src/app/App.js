@@ -17,7 +17,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		this.getFlickrImages('skateboarding');
+		this.getFlickrImages('themepark');
 	}
 
 	getFlickrImages(tags) {
