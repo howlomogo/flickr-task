@@ -12,17 +12,19 @@ class App extends Component {
 		super();
 		this.state = {
 			photos: [],
-			searchedTag: 'themepark'
+			searchedTag: 'themepark' // Default search tag
 		}
 		this.getFlickrImages = this.getFlickrImages.bind(this);
 	}
 
+	// Get images once component is loaded
 	componentDidMount() {
 		this.getFlickrImages(this.state.searchedTag);
 	}
 
-	// tag to search for, should page navigate to searchbar
+	// (tag to search for, should page navigate to searchbar)
 	getFlickrImages(tag, moveTop) {
+		// Scroll to top of page if user selects a tag
 		if(moveTop) {
 				var $target = $('#top');
 				$('html, body').stop().animate({
@@ -30,6 +32,7 @@ class App extends Component {
 				}, 200, 'swing');
 		}
 
+		{ /*retrieving data using JSONP, This is my older version of the task using the exact public feed URL given for the task, please see updated version, for better approach */}
 		const flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
 
 		let state = this;
@@ -46,6 +49,8 @@ class App extends Component {
 		});
 	}
 
+	// https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg img url
+
 
 	render() {
 		return (
@@ -60,6 +65,7 @@ class App extends Component {
 					appState={this.state}
 					getFlickrImages={this.getFlickrImages}
 				/>
+
 
 				{/* <DevHelper
 					state={this.state}

@@ -8,8 +8,10 @@ class FlickrImage extends Component {
     this.getDescription = this.getDescription.bind(this);
   }
 
+  // The public data recieved needs to be modified as shown below in order to display correctly
+
   getAuthor(author) {
-    // Get username without email
+    // Remove email from returned author - only return users name
     const start = author.indexOf('"');
     const name = author.slice(start + 1, author.length -2);
     return name;
@@ -21,7 +23,7 @@ class FlickrImage extends Component {
     return 'https://www.flickr.com/photos/' + authorLink;
   }
 
-  // *** This function will return a description of the image, however I have commented it out as the returned JSON flickr api data isn't consistant and there is no reliable way of getting the description based off of this ***
+  // This function will return a description of the image, however I have commented it out as the returned JSON flickr api data isn't consistant and there is no reliable way of getting the description based off of this, Please see updated version of app where getInfo is used in order to retrieve description
   getDescription(descriptionObj) {
     // Uncomment to view inconsistencies
     // const descStart = descriptionObj.lastIndexOf('<p>');
@@ -44,22 +46,23 @@ class FlickrImage extends Component {
       <div className="photo--container">
         <img className="photo--img" src={this.props.photo.media.m} />
         <div className="photo--content-container">
-          <a className="photo--font-title" href={this.props.photo.link} target='_blank'>
+          <a className="photo--font-title mb-2" href={this.props.photo.link} target='_blank'>
             {this.props.photo.title}
           </a>
 
-
           <a className="photo--font-author" href={this.getAuthorLink(this.props.photo.link)} target='_blank'>
-            by: {this.getAuthor(this.props.photo.author)}
+            <span className="font-weight-bold">By: </span>
+            {this.getAuthor(this.props.photo.author)}
           </a>
 
           <p className="photo--font-description">
-            Description: {this.getDescription(this.props.photo.description)}
-          </p>
-          <p className="photo--font-tag">
-            Tags:
+            <span className="font-weight-bold">Description: </span>
+            {this.getDescription(this.props.photo.description)}
           </p>
           <hr />
+          <p className="photo--font-tag font-weight-bold">
+            Tags:
+          </p>
           <div className="photo--tag-container">
             {tagList}
           </div>

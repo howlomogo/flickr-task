@@ -1,14 +1,8 @@
 $color--primary: #2196F3;
-$color--text: #2C2C2C;
-$color--para: #8D8D8D;
 
 $color--grey--100: #F5F5F5;
 $color--grey--200: #EEEEEE;
-
 $color--grey--900: #212121;
-
-$color--grey-light: #BDBDBD;
-
 
 @import 'bootstrap';
 @import './components/header';
@@ -33,6 +27,7 @@ p,a {
 
 input, button, label {
 	font-family: 'Lato', sans-serif;
+	font-weight: 300;
 }
 
 p {

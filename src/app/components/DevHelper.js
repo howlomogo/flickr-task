@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+// A dev helper to check state
 class DevHelper extends Component {
 
   constructor() {

@@ -11,6 +11,7 @@ class Filter extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // Keep input value as state for consistency on change and reset once form has been submitted
   searchFilter(event) {
     this.setState({
       searchTerm: event.target.value
@@ -19,7 +20,6 @@ class Filter extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
     this.props.getFlickrImages(this.state.searchTerm, false);
 
     // Reset searchTerm
@@ -43,7 +43,7 @@ class Filter extends Component {
                   </span>
                 </div>
 
-                { /* Cannot search api by title */ }
+                { /* Ability to search public api by title using JSONP is not avaliable, Please see updated version not using JSONP */ }
                 {/* <div className="input-group">
                   <label className="mr-1">Search By Title: </label>
                   <input type="text" className="form-control filter--search-input" placeholder="Search for..." onChange={this.searchFilter} value={this.state.searchTerm} />

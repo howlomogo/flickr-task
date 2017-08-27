@@ -5,6 +5,8 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+ // Unused styles are commented out to reduce load time
+
 // Core variables and mixins
 @import "custom";
 @import "./node_modules/bootstrap/scss/variables";
@@ -30,8 +32,8 @@
 // @import "./bower_components/bootstrap/scss/button-group";
 @import "./node_modules/bootstrap/scss/input-group";
 // @import "./bower_components/bootstrap/scss/custom-forms";
-@import "./node_modules/bootstrap/scss/nav";
-@import "./node_modules/bootstrap/scss/navbar";
+// @import "./node_modules/bootstrap/scss/nav";
+// @import "./node_modules/bootstrap/scss/navbar";
 // @import "./bower_components/bootstrap/scss/card";
 // @import "./bower_components/bootstrap/scss/breadcrumb";
 @import "./node_modules/bootstrap/scss/pagination";
