@@ -26,10 +26,24 @@ class App extends Component {
 
 	// When you reach the bottom of page use infinite scroll to show more, load in the next page of results from flickr and append them to the masonry grid.
 	gotoNextResults() {
-		console.log('Get next results');
-		this.setState({
-			pageNumber: this.state.pageNumber + 1
-		}, this.getFlickrImages(this.state.searchedTag, false))
+		const flickrAPI = "https://api.flickr.com/services/rest/?method=flickr.photos.search&";
+
+		let state = this;
+		$.getJSON( flickrAPI, {
+			nojsoncallback: 1,
+			format: 'json',
+			api_key: '8d3a64fc8d70ca2536d92ce9a4d70281',
+			tags: this.state.searchedTag,
+			per_page: 20,
+			page: this.state.pageNumber + 1
+		})
+		.done(function( data ) {
+			console.log(data.photos.photo);
+			state.setState({
+				photos: state.state.photos.concat(data.photos.photo),
+				pageNumber: state.state.pageNumber + 1
+			}, console.log(state.state));
+		});
 	}
 
 	// (tag to search for, should page navigate to searchbar)

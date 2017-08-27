@@ -45,6 +45,7 @@ class FlickrImage extends Component {
 
     // Update masonry layout when images load - to prevent any overlap
     imagesLoaded('.photo--tag', function() {
+      // console.log(this.props.masonry);
       this.props.masonry.layout();
     }.bind(this));
 
