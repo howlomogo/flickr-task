@@ -1,5 +1,7 @@
 # Flickr Task App by Matt Pilcher
 
+## This version of the Flickr Task uses the public url provided https://api.flickr.com/services/feeds/photos_public.gne?format=json please view my updated Flickr Example for extra features.
+
 The application is for a single page flickr feed.
 
 To run the app, pull down, run npm install, run webpack, run webpack-dev-server
