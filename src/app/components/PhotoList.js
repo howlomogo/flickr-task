@@ -8,46 +8,50 @@ import FlickrImage from './FlickrImage';
 class PhotoList extends Component {
   constructor() {
     super();
-    // this.addItems = this.addItems.bind(this);
-    // this.getItemElement = this.getItemElement.bind(this);
+    this.state = {
+      reachedEnd: true
+    };
+    this.handleScroll = this.handleScroll.bind(this);
+    this.pageLoadReset = this.pageLoadReset.bind(this);
+    // Initially set a cooldown on the reached bottom of page
+    this.pageLoadReset();
   }
 
-  //
-  // create new element - clikrimagecomponent
-  // getItemElement() {
-  //   var elem = document.createElement('div');
-  //   elem.className = 'photo--container';
-  //   return elem;
-  // }
+  handleScroll() {
+    const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+    const body = document.body;
+    const html = document.documentElement;
+    const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
+    const windowBottom = windowHeight + window.pageYOffset;
+    if ((windowBottom >= docHeight) && (this.state.reachedEnd === false)) {
+      console.log('reachedEnd');
+      this.props.gotoNextResults();
+      this.setState({
+        reachedEnd: true
+      })
+      this.pageLoadReset();
+    }
+  }
 
-  // do not need to add items this way, as instead will update via state.
-  // I will create own infinate scroll for this.
-  // addItems() {
-  //   // create new item elements
-  //   var grid = document.querySelector('.masonry--container');
-  //   var elems = [];
-  //   var fragment = document.createDocumentFragment();
-  //   for ( var i = 0; i < 3; i++ ) {
-  //     var elem = this.getItemElement();
-  //     fragment.appendChild( elem );
-  //     elems.push( elem );
-  //   }
+  pageLoadReset() {
+    // Add a small timeout to avoid scrolling too fast down
+    setTimeout(
+      function(){
+        this.setState({
+          reachedEnd: false
+        });
+      }.bind(this), 2000);
+  }
 
-  //   // append elements to container
-  //   grid.appendChild( fragment );
-  //   // add and lay out newly appended elements
-  //   // msnry.appended( elems );
-  //
-  //   this.masonry.appended( elems );
-  // }
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
 
   render() {
-
-    $(window).scroll(function() {
-       if($(window).scrollTop() + $(window).height() == $(document).height()) {
-         console.log('Reached bottom of page, gotoNextResults');
-       }
-    });
 
     const photosList = this.props.appState.photos.map((photo) => {
       return(
@@ -69,7 +73,6 @@ class PhotoList extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            {/* create reference to masonry so layout can be called when image sizes update */}
             <Masonry
                 ref={function(c) {this.masonry = this.masonry || c.masonry;}.bind(this)}
                 className={'masonry--container'}
@@ -85,11 +88,6 @@ class PhotoList extends Component {
             <button className="btn btn-primary" onClick={() => this.props.gotoNextResults()}>
               Next page
             </button>
-
-            {/* Call get flickers for next page. append the items dont replace them*/}
-            {/* <button className="btn btn-primary" onClick={() => this.addItems()}>
-              Add Items
-            </button> */}
           </div>
         </div>
       </div>

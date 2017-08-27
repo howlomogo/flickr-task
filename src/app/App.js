@@ -17,6 +17,8 @@ class App extends Component {
 		}
 		this.gotoNextResults = this.gotoNextResults.bind(this);
 		this.getFlickrImages = this.getFlickrImages.bind(this);
+
+		this.getFlickrImages(this.state.searchedTag);
 	}
 
 	// Get images once component is loaded

@@ -8,7 +8,7 @@
   @extend .m-2;
   background-color: #ffffff;
   box-shadow: 1px 2px 20px 1px #d3d3d3;
-  min-height: 300px;
+  // min-height: 300px;
 }
 
 .photo--img {
@@ -26,6 +26,8 @@
 .photo--tag-container {
   // height: 200px;
   // overflow: scroll;
+  max-height: 115px; // Add dropdown to expand this if there is enough time
+  overflow: hidden;
 }
 
 .photo--tag {
@@ -35,7 +37,7 @@
   margin: 4px 4px 4px 0px;
   background-color: $color--primary;
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   border-radius: 0.25rem;
   word-break: break-all;
   transition: background-color 0.3s;
@@ -65,6 +67,8 @@
   text-decoration: none;
   word-wrap: break-word;
   @extend .mb-1;
+  max-height: 200px; // Add dropdown to expand this if there is enough time
+  overflow: hidden;
 }
 
 .photo--font-tag {
