@@ -94,9 +94,9 @@ class App extends Component {
 					gotoNextResults={this.gotoNextResults}
 				/>
 
-				<DevHelper
+				{/* <DevHelper
 					state={this.state}
-				/>
+				/> */}
 			</div>
 		)
 	}
