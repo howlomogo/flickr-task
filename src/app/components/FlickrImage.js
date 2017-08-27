@@ -1,70 +1,80 @@
 import React, {Component} from 'react';
+import $ from 'jquery';
 
 class FlickrImage extends Component {
   constructor() {
     super();
-    this.getAuthor = this.getAuthor.bind(this);
-    this.getAuthorLink = this.getAuthorLink.bind(this);
-    this.getDescription = this.getDescription.bind(this);
+    this.state = {
+      description: '',
+      tags: '',
+      authorUsername: '',
+      authorRealname: ''
+		}
   }
 
-  // The public data recieved needs to be modified as shown below in order to display correctly
+  // Use Flickrs getInfo call to retrieve data for this image.
+  componentWillMount() {
 
-  getAuthor(author) {
-    // Remove email from returned author - only return users name
-    const start = author.indexOf('"');
-    const name = author.slice(start + 1, author.length -2);
-    return name;
+    const flickerAPI = "https://api.flickr.com/services/rest/?method=flickr.photos.getInfo";
+
+    let state = this;
+    $.getJSON( flickerAPI, {
+      api_key: '8d3a64fc8d70ca2536d92ce9a4d70281',
+      photo_id: this.props.photo.id,
+      format: 'json',
+      nojsoncallback: 1
+      // auth_token: '72157685746730583-b9beea5e43fbfd11',
+      // api_sig: '0421587924739ed3e518e67bd9bd1fb2'
+    })
+    .done(function( info ) {
+      console.log(info.photo);
+
+
+
+      state.setState({
+        description: info.photo.description._content,
+        tags: info.photo.tags.tag,
+        authorUsername: info.photo.owner.username,
+        authorRealname: info.photo.owner.realname
+      }, console.log(state));
+    });
+
   }
 
-  getAuthorLink(link) {
-    // Remove photo id from end of link and link to authors page
-    const authorLink = link.split('/').slice(4,5);
-    return 'https://www.flickr.com/photos/' + authorLink;
-  }
 
-  // This function will return a description of the image, however I have commented it out as the returned JSON flickr api data isn't consistant and there is no reliable way of getting the description based off of this, Please see updated version of app where getInfo is used in order to retrieve description
-  getDescription(descriptionObj) {
-    // Uncomment to view inconsistencies
-    // const descStart = descriptionObj.lastIndexOf('<p>');
-    // const description = descriptionObj.slice(descStart + 3, descriptionObj.length - 4);
-
-    const description = 'A dummy description of the Flickr image, please view FlickrImage.js to see reasoning for using this here.'
-    return description;
-  }
 
 
   render() {
-    const tags = this.props.photo.tags.split(' ');
-    const tagList = tags.map((tag) => {
-      return(
-        <div onClick={() => this.props.getFlickrImages(tag, true)} className="photo--tag" key={tag}>{tag}</div>
-      )
-    })
+
+    // Masonry should be loaded after componentWillMount
+
+
+ // https://farm{this.props.photo.farm}.staticflickr.com/{this.props.photo.server}/{this.props.photo.id}_{this.props.photo.secret}.jpg
+
 
     return(
       <div className="photo--container">
-        <img className="photo--img" src={this.props.photo.media.m} />
+        <img className="photo--img" src={"https://farm" + this.props.photo.farm + ".staticflickr.com/" + this.props.photo.server + "/" + this.props.photo.id + "_" + this.props.photo.secret + ".jpg"} />
         <div className="photo--content-container">
-          <a className="photo--font-title mb-2" href={this.props.photo.link} target='_blank'>
+          <a className="photo--font-title mb-2" href={this.props.photoLink} target='_blank'>
             {this.props.photo.title}
           </a>
 
-          <a className="photo--font-author" href={this.getAuthorLink(this.props.photo.link)} target='_blank'>
+          <a className="photo--font-author" href={this.props.authorLink} target='_blank'>
             <span className="font-weight-bold">By: </span>
-            {this.getAuthor(this.props.photo.author)}
+            {this.state.authorUsername}
           </a>
 
           <p className="photo--font-description">
             <span className="font-weight-bold">Description: </span>
-            {this.getDescription(this.props.photo.description)}
+            {this.state.description}
           </p>
           <hr />
           <p className="photo--font-tag font-weight-bold">
             Tags:
           </p>
           <div className="photo--tag-container">
-            {tagList}
+            <h5>Tag List</h5>
           </div>
         </div>
       </div>

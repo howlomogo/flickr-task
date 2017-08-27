@@ -32,18 +32,21 @@ class App extends Component {
 				}, 200, 'swing');
 		}
 
-		{ /*retrieving data using JSONP, This is my older version of the task using the exact public feed URL given for the task, please see updated version, for better approach */}
-		const flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+		const flickrAPI = "https://api.flickr.com/services/rest/?method=flickr.photos.search&";
 
 		let state = this;
 		$.getJSON( flickrAPI, {
-			tags: tag,
-			tagmode: "any",
-			format: "json"
+			nojsoncallback: 1,
+			format: 'json',
+			api_key: '8d3a64fc8d70ca2536d92ce9a4d70281',
+			// api_sig: 'ce3324b11aafc3e834d2ed98f1d56404',
+			tags: 'skateboarding',
+			per_page: 20
 		})
 		.done(function( data ) {
+			console.log(data.photos.photo);
 			state.setState({
-				photos: data.items,
+				photos: data.photos.photo,
 				searchedTag: tag
 			})
 		});
@@ -67,9 +70,9 @@ class App extends Component {
 				/>
 
 
-				{/* <DevHelper
+				<DevHelper
 					state={this.state}
-				/> */}
+				/>
 			</div>
 		)
 	}

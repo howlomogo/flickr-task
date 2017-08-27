@@ -13,7 +13,7 @@ class PhotoList extends Component {
     const photosList = this.props.appState.photos.map((photo) => {
       return(
         <FlickrImage
-          key={photo.link}
+          key={photo.id}
           photo={photo}
           getFlickrImages={this.props.getFlickrImages}
         />
