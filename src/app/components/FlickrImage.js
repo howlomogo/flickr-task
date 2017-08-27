@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
+import imagesLoaded from 'imagesloaded';
 
 class FlickrImage extends Component {
   constructor() {
@@ -13,18 +14,33 @@ class FlickrImage extends Component {
     this.checkDescription = this.checkDescription.bind(this);
   }
 
+
+  // imagesLoaded( document.querySelector('.container'), function( instance ) {
+  //   console.log('all images are loaded');
+  // });
+  // selector string
+  // imagesLoaded('.photo--img', function() {
+  //   console.log('blahhhhh');
+  // });
+  // multiple elements
+  // var posts = document.querySelectorAll('.photo--container');
+  // imagesLoaded( posts, function() {
+  //   console.log('ejwfonrjfe');
+  // });
+
   componentWillMount() {
     // Use Flickrs getInfo call to get data for this photo
-    const flickerAPI = "https://api.flickr.com/services/rest/?method=flickr.photos.getInfo";
+    const flickrAPI = "https://api.flickr.com/services/rest/?method=flickr.photos.getInfo";
 
     let state = this;
-    $.getJSON( flickerAPI, {
+    $.getJSON( flickrAPI, {
       api_key: '8d3a64fc8d70ca2536d92ce9a4d70281',
       photo_id: this.props.photo.id,
       format: 'json',
       nojsoncallback: 1
     })
     .done(function( info ) {
+      // console.log('json loaded for photo');
       // Get properties we need for this photo and put them in state
       state.setState({
         description: info.photo.description._content,
@@ -41,10 +57,16 @@ class FlickrImage extends Component {
   }
 
   render() {
-    console.log(this.state); // Should not be running until image info is fully loaded
+
+    // Update masonry layout when images load - to prevent any overlap
+    imagesLoaded('.photo--tag', function() {
+      this.props.masonry.layout();
+    }.bind(this));
+
+    // Rendered too early for masonry
     const tagList = this.state.tags.map((tag) => {
       return(
-        <div onClick={() => this.props.getFlickrImages(tag, true)} className="photo--tag" key={tag.id}>{tag._content}</div>
+        <div onClick={() => this.props.getFlickrImages(tag._content, true)} className="photo--tag" key={tag.id}>{tag._content}</div>
       )
     })
 

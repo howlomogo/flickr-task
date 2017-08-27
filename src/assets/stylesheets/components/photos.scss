@@ -62,6 +62,7 @@
 .photo--font-description {
   font-size: 0.75rem;
   text-decoration: none;
+  word-wrap: break-word;
   @extend .mb-1;
 }
 

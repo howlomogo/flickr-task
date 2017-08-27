@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Masonry from 'react-masonry-component';
+import $ from 'jquery';
 
 // Components
 import FlickrImage from './FlickrImage';
@@ -16,6 +17,7 @@ class PhotoList extends Component {
           key={photo.id}
           photo={photo}
           getFlickrImages={this.props.getFlickrImages}
+          masonry={this.masonry}
         />
       )
     })
@@ -29,7 +31,10 @@ class PhotoList extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
+            {/* create reference to masonry so layout can be called when image sizes update */}
             <Masonry
+                ref={function(c) {this.masonry = this.masonry || c.masonry;}.bind(this)}
+                onImagesLoaded={this.handleImagesLoaded}
                 className={'masonry--container'}
                 elementType={'div'}
                 options={masonryOptions}

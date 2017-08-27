@@ -40,7 +40,7 @@ class App extends Component {
 			format: 'json',
 			api_key: '8d3a64fc8d70ca2536d92ce9a4d70281',
 			// api_sig: 'ce3324b11aafc3e834d2ed98f1d56404',
-			tags: 'skateboarding',
+			tags: tag,
 			per_page: 20
 		})
 		.done(function( data ) {
@@ -51,9 +51,6 @@ class App extends Component {
 			})
 		});
 	}
-
-	// https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg img url
-
 
 	render() {
 		return (
@@ -70,9 +67,9 @@ class App extends Component {
 				/>
 
 
-				<DevHelper
+				{/* <DevHelper
 					state={this.state}
-				/>
+				/> */}
 			</div>
 		)
 	}
