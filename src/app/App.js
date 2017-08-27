@@ -12,8 +12,10 @@ class App extends Component {
 		super();
 		this.state = {
 			photos: [],
+			pageNumber: 1,
 			searchedTag: 'themepark' // Default search tag
 		}
+		this.gotoNextResults = this.gotoNextResults.bind(this);
 		this.getFlickrImages = this.getFlickrImages.bind(this);
 	}
 
@@ -22,9 +24,18 @@ class App extends Component {
 		this.getFlickrImages(this.state.searchedTag);
 	}
 
+	// When you reach the bottom of page use infinite scroll to show more, load in the next page of results from flickr and append them to the masonry grid.
+	gotoNextResults() {
+		console.log('Get next results');
+		this.setState({
+			pageNumber: this.state.pageNumber + 1
+		}, this.getFlickrImages(this.state.searchedTag, false))
+	}
+
 	// (tag to search for, should page navigate to searchbar)
 	getFlickrImages(tag, moveTop) {
 		// Scroll to top of page if user selects a tag
+
 		if(moveTop) {
 				var $target = $('#top');
 				$('html, body').stop().animate({
@@ -39,9 +50,9 @@ class App extends Component {
 			nojsoncallback: 1,
 			format: 'json',
 			api_key: '8d3a64fc8d70ca2536d92ce9a4d70281',
-			// api_sig: 'ce3324b11aafc3e834d2ed98f1d56404',
 			tags: tag,
-			per_page: 20
+			per_page: 20,
+			page: this.state.pageNumber
 		})
 		.done(function( data ) {
 			console.log(data.photos.photo);
@@ -64,12 +75,12 @@ class App extends Component {
 				<PhotoList
 					appState={this.state}
 					getFlickrImages={this.getFlickrImages}
+					gotoNextResults={this.gotoNextResults}
 				/>
 
-
-				{/* <DevHelper
+				<DevHelper
 					state={this.state}
-				/> */}
+				/>
 			</div>
 		)
 	}

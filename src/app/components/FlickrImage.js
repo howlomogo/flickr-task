@@ -14,20 +14,6 @@ class FlickrImage extends Component {
     this.checkDescription = this.checkDescription.bind(this);
   }
 
-
-  // imagesLoaded( document.querySelector('.container'), function( instance ) {
-  //   console.log('all images are loaded');
-  // });
-  // selector string
-  // imagesLoaded('.photo--img', function() {
-  //   console.log('blahhhhh');
-  // });
-  // multiple elements
-  // var posts = document.querySelectorAll('.photo--container');
-  // imagesLoaded( posts, function() {
-  //   console.log('ejwfonrjfe');
-  // });
-
   componentWillMount() {
     // Use Flickrs getInfo call to get data for this photo
     const flickrAPI = "https://api.flickr.com/services/rest/?method=flickr.photos.getInfo";
@@ -40,7 +26,6 @@ class FlickrImage extends Component {
       nojsoncallback: 1
     })
     .done(function( info ) {
-      // console.log('json loaded for photo');
       // Get properties we need for this photo and put them in state
       state.setState({
         description: info.photo.description._content,

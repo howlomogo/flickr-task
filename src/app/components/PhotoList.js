@@ -44,6 +44,11 @@ class PhotoList extends Component {
               {photosList}
             </Masonry>
           </div>
+          <div className="col-md-12">
+            <button className="btn btn-primary" onClick={() => this.props.gotoNextResults()}>
+              Next page
+            </button>
+          </div>
         </div>
       </div>
     )
