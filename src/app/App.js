@@ -11,7 +11,7 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			API_KEY: '394234ae8743b752343142208d378081',
+			API_KEY: 'e55481fc46aa96c8aeb7e1c6aa665780',
 			photos: [],
 			pageNumber: 1,
 			searchedTag: 'themepark' // Default search tag
