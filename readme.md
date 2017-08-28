@@ -4,7 +4,7 @@ To run the web app, clone from git, run npm install, run webpack for production,
 
 DEMO - www.mattpilcher.co.uk/sites/flickr
 
-####Features of the application
+##### Features of the application
 - Displaying Flickr public feed images and data modification to allow for it to display correctly
 - Ability to search Flickr feed and display results based on tag and input
 - Ability to click on tags of already found images to search for that tag
