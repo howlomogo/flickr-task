@@ -42,16 +42,6 @@ class Filter extends Component {
                     <button className="btn btn--primary" type='submit' value='Search'>Search</button>
                   </span>
                 </div>
-
-                { /* Ability to search public api by title using JSONP is not avaliable, Please see updated version not using JSONP */ }
-                {/* <div className="input-group">
-                  <label className="mr-1">Search By Title: </label>
-                  <input type="text" className="form-control filter--search-input" placeholder="Search for..." onChange={this.searchFilter} value={this.state.searchTerm} />
-                  <span className="input-group-btn">
-                    <button className="btn btn--primary" type='submit' value='Search'>Search</button>
-                  </span>
-                </div> */}
-
               </form>
             </div>
             <div className="col-md-12">

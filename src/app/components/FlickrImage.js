@@ -12,6 +12,7 @@ class FlickrImage extends Component {
       authorRealname: ''
 		}
     this.checkDescription = this.checkDescription.bind(this);
+    this.toggleTags = this.toggleTags.bind(this);
   }
 
   componentWillMount() {
@@ -39,6 +40,20 @@ class FlickrImage extends Component {
   // Return 'No Description' for images which have empty descriptions
   checkDescription(description) {
     return description.trim() !== '';
+  }
+
+  // Toggle the tag section of photos
+  toggleTags() {
+    $('#tags--' + this.props.photo.id).toggleClass('active');
+    $('#tags--toggle--' + this.props.photo.id).toggleClass('active');
+    this.props.masonry.layout();
+  }
+
+  // Toggle the tag section of photos
+  toggleDescription() {
+    $('#description--' + this.props.photo.id).toggleClass('active');
+    $('#description--toggle--' + this.props.photo.id).toggleClass('active');
+    this.props.masonry.layout();
   }
 
   render() {
@@ -69,19 +84,36 @@ class FlickrImage extends Component {
             {this.state.authorUsername}
           </a>
 
-          <p className="photo--font-description">
-            <span className="font-weight-bold">Description: </span>
+          <div id={`description--` + this.props.photo.id} className="photo--description-container" >
+            <p className="photo--font-description font-weight-bold d-inline-block">
+              Description:
+            </p>
+            {this.state.description.length > 200 &&
+              <div id={`description--toggle--` + this.props.photo.id} className="arrow--toggle" onClick={() => this.toggleDescription()}>
+              </div>
+            }
+
             {this.checkDescription(this.state.description) ? (
-              this.state.description
+              <p className="photo--font-description">
+                {this.state.description}
+              </p>
             ) : (
-              <span>No description</span>
+              <p className="photo--font-description">
+                No description
+              </p>
             )}
-          </p>
+          </div>
           <hr />
-          <p className="photo--font-tag font-weight-bold">
-            Tags:
-          </p>
-          <div className="photo--tag-container">
+          <div>
+            <p className="photo--font-tag font-weight-bold">
+              Tags:
+            </p>
+            {this.state.tags.length > 6 &&
+              <div id={`tags--toggle--` + this.props.photo.id} className="arrow--toggle" onClick={() => this.toggleTags()}>
+              </div>
+            }
+          </div>
+          <div id={`tags--` + this.props.photo.id} className="photo--tag-container">
             {tagList}
           </div>
         </div>

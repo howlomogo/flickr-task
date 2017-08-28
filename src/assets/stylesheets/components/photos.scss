@@ -28,6 +28,10 @@
   // overflow: scroll;
   max-height: 115px; // Add dropdown to expand this if there is enough time
   overflow: hidden;
+
+  &.active {
+    max-height: none;
+  }
 }
 
 .photo--tag {
@@ -48,6 +52,35 @@
 	}
 }
 
+.photo--description-container {
+  max-height: 150px; // Add dropdown to expand this if there is enough time
+  overflow: hidden;
+
+  &.active {
+    max-height: none;
+  }
+
+}
+
+.arrow--toggle {
+  display: inline-block;
+  float: right;
+  width: 0;
+  height: 0;
+  margin-top: 10px;
+  cursor: pointer;
+
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid $color--grey--400;
+  &.active {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid $color--grey--400;
+    border-top: none;
+  }
+}
+
 .photo--font-title {
   font-size: 1rem;
   text-decoration: none;
@@ -66,12 +99,13 @@
   font-size: 0.75rem;
   text-decoration: none;
   word-wrap: break-word;
-  @extend .mb-1;
-  max-height: 200px; // Add dropdown to expand this if there is enough time
+  @extend .mb-0;
+  max-height: 190px; // Add dropdown to expand this if there is enough time
   overflow: hidden;
 }
 
 .photo--font-tag {
+  display: inline-block;
   font-size: 0.75rem;
   text-decoration: none;
   @extend .mb-1;
