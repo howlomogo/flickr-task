@@ -13,6 +13,7 @@ class FlickrImage extends Component {
 		}
     this.checkDescription = this.checkDescription.bind(this);
     this.toggleTags = this.toggleTags.bind(this);
+    this.getHTMLfromDescription = this.getHTMLfromDescription.bind(this);
   }
 
   componentWillMount() {
@@ -35,6 +36,11 @@ class FlickrImage extends Component {
         authorRealname: info.photo.owner.realname
       });
     });
+  }
+
+  // Convert description HTML string to html
+  getHTMLfromDescription() {
+    return {__html: this.state.description};
   }
 
   // Return 'No Description' for images which have empty descriptions
@@ -60,7 +66,6 @@ class FlickrImage extends Component {
 
     // Update masonry layout when images load - to prevent any overlap
     imagesLoaded('.photo--tag', function() {
-      // console.log(this.props.masonry);
       this.props.masonry.layout();
     }.bind(this));
 
@@ -88,14 +93,14 @@ class FlickrImage extends Component {
             <p className="photo--font-description font-weight-bold d-inline-block">
               Description:
             </p>
-            {this.state.description.length > 200 &&
+            {this.state.description.length > 280 &&
               <div id={`description--toggle--` + this.props.photo.id} className="arrow--toggle" onClick={() => this.toggleDescription()}>
               </div>
             }
 
             {this.checkDescription(this.state.description) ? (
               <p className="photo--font-description">
-                {this.state.description}
+                <span dangerouslySetInnerHTML={this.getHTMLfromDescription()} />
               </p>
             ) : (
               <p className="photo--font-description">
@@ -108,7 +113,7 @@ class FlickrImage extends Component {
             <p className="photo--font-tag font-weight-bold">
               Tags:
             </p>
-            {this.state.tags.length > 6 &&
+            {this.state.tags.length > 8 &&
               <div id={`tags--toggle--` + this.props.photo.id} className="arrow--toggle" onClick={() => this.toggleTags()}>
               </div>
             }
