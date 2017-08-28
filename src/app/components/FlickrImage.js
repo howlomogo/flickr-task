@@ -104,7 +104,7 @@ class FlickrImage extends Component {
             )}
           </div>
           <hr />
-          <div>
+          <div className="photo--tag-header">
             <p className="photo--font-tag font-weight-bold">
               Tags:
             </p>

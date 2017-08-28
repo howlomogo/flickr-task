@@ -23,6 +23,10 @@
   @extend .p-2;
 }
 
+.photo--tag-header {
+  position: relative;
+}
+
 .photo--tag-container {
   // height: 200px;
   // overflow: scroll;
@@ -55,6 +59,7 @@
 .photo--description-container {
   max-height: 150px; // Add dropdown to expand this if there is enough time
   overflow: hidden;
+  position: relative;
 
   &.active {
     max-height: none;
@@ -63,8 +68,9 @@
 }
 
 .arrow--toggle {
-  display: inline-block;
-  float: right;
+  position: absolute;
+  right:0;
+  top: 0;
   width: 0;
   height: 0;
   margin-top: 10px;
