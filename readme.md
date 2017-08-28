@@ -22,6 +22,8 @@ Features which could be added in the future
 
 ***
 
+###### Cross browser tested, however would recommend viewing in Chrome for best results.
+
 ###### Please note the API KEY may need updating before viewing as it expires quickly, if no images load this will be the reason and simply a new api key needs to be used. However hopefully this is not an issue
 
 ##### To view an older version of the task I created which uses the exact public api provided -> (https://api.flickr.com/services/feeds/photos_public.gne?format=json), Please visit this link https://github.com/howlomogo/flickr-task-publicfeed-old
