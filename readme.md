@@ -1,6 +1,11 @@
 # Flickr Task App by Matt Pilcher
 
-To run the web app, clone from git, run npm install, run webpack for production, run webpack-dev-server for local development.
+To run the web app locally
+- clone from git
+- run "npm install"
+- run "npm install --save bootstrap@4.0.0-alpha.6" (Bootstrap is overwritten otherwise unfortunately have run out of time this weekend to debug this further)
+- run "webpack" to generate production code
+- run "webpack-dev-server" for local development server
 
 DEMO - www.mattpilcher.co.uk/sites/flickr
 
