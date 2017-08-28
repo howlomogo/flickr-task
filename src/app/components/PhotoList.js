@@ -5,6 +5,7 @@ import $ from 'jquery';
 // Components
 import FlickrImage from './FlickrImage';
 
+// Component to handle the listing the Flickr Images
 class PhotoList extends Component {
   constructor() {
     super();
@@ -17,6 +18,7 @@ class PhotoList extends Component {
     this.pageLoadReset();
   }
 
+  // Function to check if user has scrolled to the bottom of page, if so load in more images from Flickr
   handleScroll() {
     const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
     const body = document.body;
@@ -24,7 +26,6 @@ class PhotoList extends Component {
     const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
     const windowBottom = windowHeight + window.pageYOffset;
     if ((windowBottom >= docHeight) && (this.state.reachedEnd === false)) {
-      console.log('reachedEnd');
       this.props.gotoNextResults();
       this.setState({
         reachedEnd: true
@@ -52,7 +53,6 @@ class PhotoList extends Component {
   }
 
   render() {
-
     const photosList = this.props.appState.photos.map((photo) => {
       return(
         <FlickrImage
@@ -74,6 +74,7 @@ class PhotoList extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
+            {/* Masonry React Component, set a reference to masonry to allow for use elsewhere */}
             <Masonry
                 ref={function(c) {this.masonry = this.masonry || c.masonry;}.bind(this)}
                 className={'masonry--container'}
@@ -84,11 +85,6 @@ class PhotoList extends Component {
             >
               {photosList}
             </Masonry>
-          </div>
-          <div className="col-md-12">
-            {/* <button className="btn btn-primary" onClick={() => this.props.gotoNextResults()}>
-              Next page
-            </button> */}
           </div>
         </div>
       </div>

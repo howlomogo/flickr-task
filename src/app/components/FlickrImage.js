@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import $ from 'jquery';
 import imagesLoaded from 'imagesloaded';
 
+// Component for Flickr details, image, title, tags etc
 class FlickrImage extends Component {
   constructor() {
     super();
@@ -84,35 +85,42 @@ class FlickrImage extends Component {
             {this.props.photo.title}
           </a>
 
-          <a className="photo--font-author" href={"https://www.flickr.com/photos/" + this.props.photo.owner} target='_blank'>
+          <p className="photo--font-author">
             <span className="font-weight-bold">By: </span>
-            {this.state.authorUsername}
-          </a>
+            <span>
+              <a href={"https://www.flickr.com/photos/" + this.props.photo.owner} target='_blank' className="d-inline-block">
+                {this.state.authorUsername}
+              </a>
+            </span>
+          </p>
 
           <div id={`description--` + this.props.photo.id} className="photo--description-container" >
-            <p className="photo--font-description font-weight-bold d-inline-block">
+            <p className="photo--font-description font-weight-bold">
               Description:
             </p>
+            <p className="photo--font-description">
+              {this.checkDescription(this.state.description) ? (
+                <span dangerouslySetInnerHTML={this.getHTMLfromDescription()} />
+              ) : (
+                <span>
+                  No description
+                </span>
+              )}
+            </p>
+
+
+            { /* If length is over 280, show arrow toggle */ }
             {this.state.description.length > 280 &&
               <div id={`description--toggle--` + this.props.photo.id} className="arrow--toggle" onClick={() => this.toggleDescription()}>
               </div>
             }
-
-            {this.checkDescription(this.state.description) ? (
-              <p className="photo--font-description">
-                <span dangerouslySetInnerHTML={this.getHTMLfromDescription()} />
-              </p>
-            ) : (
-              <p className="photo--font-description">
-                No description
-              </p>
-            )}
           </div>
           <hr />
           <div className="photo--tag-header">
             <p className="photo--font-tag font-weight-bold">
               Tags:
             </p>
+            { /* If there are more than 8 tags, show arrow toggle */ }
             {this.state.tags.length > 8 &&
               <div id={`tags--toggle--` + this.props.photo.id} className="arrow--toggle" onClick={() => this.toggleTags()}>
               </div>

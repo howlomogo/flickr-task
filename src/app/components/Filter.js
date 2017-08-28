@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+// Component for getting new results
 class Filter extends Component {
 
   constructor() {

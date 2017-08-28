@@ -11,6 +11,7 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
+			// The API_KEY may need to be updated
 			API_KEY: 'e55481fc46aa96c8aeb7e1c6aa665780',
 			photos: [],
 			pageNumber: 1,
@@ -27,7 +28,7 @@ class App extends Component {
 		this.getFlickrImages(this.state.searchedTag);
 	}
 
-	// When you reach the bottom of page use infinite scroll to show more, load in the next page of results from flickr and append them to the masonry grid.
+	// When you reach the bottom of page load in the next page of results from flickr and append them to the masonry grid.
 	gotoNextResults() {
 		const flickrAPI = "https://api.flickr.com/services/rest/?method=flickr.photos.search&";
 
@@ -48,16 +49,14 @@ class App extends Component {
 				state.setState({
 					photos: state.state.photos.concat(data.photos.photo),
 					pageNumber: state.state.pageNumber + 1
-				}, console.log(state.state));
+				});
 			}
-			console.log(data.photos.photo);
 		});
 	}
 
-	// (tag to search for, should page navigate to searchbar)
+	// getFlickrImages(tag to search for, should page navigate to top)
 	getFlickrImages(tag, moveTop) {
 		// Scroll to top of page if user selects a tag
-
 		if(moveTop) {
 				var $target = $('#top');
 				$('html, body').stop().animate({
@@ -81,13 +80,11 @@ class App extends Component {
 				console.log('Check API KEY / use another API_KEY');
 			}
 			else {
-				// console.log(data.photos.photo);
 				state.setState({
 					photos: data.photos.photo,
 					searchedTag: tag
 				})
 			}
-			console.log(data);
 		});
 	}
 

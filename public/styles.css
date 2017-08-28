@@ -2810,7 +2810,7 @@ a.bg-inverse:focus, a.bg-inverse:hover {
 .mr-0 {
   margin-right: 0 !important; }
 
-.mb-0 {
+.mb-0, .photo--font-description {
   margin-bottom: 0 !important; }
 
 .ml-0 {
@@ -2833,7 +2833,7 @@ a.bg-inverse:focus, a.bg-inverse:hover {
 .mr-1 {
   margin-right: 0.5rem !important; }
 
-.mb-1, .photo--font-title, .photo--font-author, .photo--font-description, .photo--font-tag {
+.mb-1, .photo--font-title, .photo--font-author, .photo--font-tag {
   margin-bottom: 0.5rem !important; }
 
 .ml-1 {
@@ -4879,9 +4879,14 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   display: block;
   margin: 0 auto; }
 
+.photo--tag-header {
+  position: relative; }
+
 .photo--tag-container {
   max-height: 115px;
   overflow: hidden; }
+  .photo--tag-container.active {
+    max-height: none; }
 
 .photo--tag {
   color: #ffffff;
@@ -4895,6 +4900,30 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   cursor: pointer; }
   .photo--tag:hover {
     background-color: #51adf6; }
+
+.photo--description-container {
+  max-height: 150px;
+  overflow: hidden;
+  position: relative; }
+  .photo--description-container.active {
+    max-height: none; }
+
+.arrow--toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  margin-top: 10px;
+  cursor: pointer;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #BDBDBD; }
+  .arrow--toggle.active {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #BDBDBD;
+    border-top: none; }
 
 .photo--font-title {
   font-size: 1rem;
@@ -4910,10 +4939,11 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   font-size: 0.75rem;
   text-decoration: none;
   word-wrap: break-word;
-  max-height: 200px;
+  max-height: 190px;
   overflow: hidden; }
 
 .photo--font-tag {
+  display: inline-block;
   font-size: 0.75rem;
   text-decoration: none; }
 
