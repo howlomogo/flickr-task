@@ -11,6 +11,7 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
+			API_KEY: '394234ae8743b752343142208d378081',
 			photos: [],
 			pageNumber: 1,
 			searchedTag: 'themepark' // Default search tag
@@ -34,17 +35,22 @@ class App extends Component {
 		$.getJSON( flickrAPI, {
 			nojsoncallback: 1,
 			format: 'json',
-			api_key: '8d3a64fc8d70ca2536d92ce9a4d70281',
+			api_key: this.state.API_KEY,
 			tags: this.state.searchedTag,
 			per_page: 20,
 			page: this.state.pageNumber + 1
 		})
 		.done(function( data ) {
+			if(data.stat === 'fail') {
+				console.log('Check API KEY / use another API_KEY');
+			}
+			else {
+				state.setState({
+					photos: state.state.photos.concat(data.photos.photo),
+					pageNumber: state.state.pageNumber + 1
+				}, console.log(state.state));
+			}
 			console.log(data.photos.photo);
-			state.setState({
-				photos: state.state.photos.concat(data.photos.photo),
-				pageNumber: state.state.pageNumber + 1
-			}, console.log(state.state));
 		});
 	}
 
@@ -65,17 +71,23 @@ class App extends Component {
 		$.getJSON( flickrAPI, {
 			nojsoncallback: 1,
 			format: 'json',
-			api_key: '8d3a64fc8d70ca2536d92ce9a4d70281',
+			api_key: this.state.API_KEY,
 			tags: tag,
 			per_page: 20,
 			page: this.state.pageNumber
 		})
 		.done(function( data ) {
-			console.log(data.photos.photo);
-			state.setState({
-				photos: data.photos.photo,
-				searchedTag: tag
-			})
+			if(data.stat === 'fail') {
+				console.log('Check API KEY / use another API_KEY');
+			}
+			else {
+				// console.log(data.photos.photo);
+				state.setState({
+					photos: data.photos.photo,
+					searchedTag: tag
+				})
+			}
+			console.log(data);
 		});
 	}
 

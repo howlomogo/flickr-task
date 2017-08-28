@@ -27,4 +27,6 @@ Features to add in the future
 
 ***
 
+###### API KEY may need updating when viewing.
+
 ##### To view an older version of the task I created please view https://api.flickr.com/services/feeds/photos_public.gne?format=json which uses the exact public api provided.

@@ -20,7 +20,7 @@ class FlickrImage extends Component {
 
     let state = this;
     $.getJSON( flickrAPI, {
-      api_key: '8d3a64fc8d70ca2536d92ce9a4d70281',
+      api_key: this.props.appState.API_KEY,
       photo_id: this.props.photo.id,
       format: 'json',
       nojsoncallback: 1

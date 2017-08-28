@@ -60,6 +60,7 @@ class PhotoList extends Component {
           photo={photo}
           getFlickrImages={this.props.getFlickrImages}
           masonry={this.masonry}
+          appState={this.props.appState}
         />
       )
     })
