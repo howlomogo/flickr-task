@@ -16,7 +16,7 @@
     "jsonp": "^0.2.1",
     "react-masonry-component": "^5.0.7",
     "webpack": "^3.4.1",
-    "webpack-dev-server": "^2.6.1"
+    "webpack-dev-server": "^3.1.11"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -39,6 +39,6 @@
     "style-loader": "^0.18.2",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.4.1",
-    "webpack-dev-server": "^2.6.1"
+    "webpack-dev-server": "^3.1.11"
   }
 }
