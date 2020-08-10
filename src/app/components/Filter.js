@@ -37,10 +37,9 @@ class Filter extends Component {
             <div className="col-md-12">
               <form className="form-inline filter--form" onSubmit={this.handleSubmit}>
                 <div className="input-group">
-                  {/* <label className="mr-1">Search By Tag: </label> */}
                   <input type="text" className="form-control filter--search-input" placeholder="Search by tag" onChange={this.searchFilter} value={this.state.searchTerm} />
                   <span className="input-group-btn">
-                    <button className="btn btn--primary" type='submit' value='Search'>Search</button>
+                    <button className="btn btn-primary btn-search" type='submit' value='Search'>Search</button>
                   </span>
                 </div>
               </form>

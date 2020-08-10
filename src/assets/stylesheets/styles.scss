@@ -121,3 +121,8 @@ h6 {
 		background-color: lighten($color--primary,10%);
 	}
 }
+
+.btn-search {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;	
+}
