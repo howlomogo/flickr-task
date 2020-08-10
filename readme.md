@@ -1,4 +1,4 @@
-# Flickr Task App by Matt Pilcher
+# Flickr Task App (Created as part of Technical Interview) by Matt Pilcher
 
 To run the web app locally
 - clone from git
