@@ -1,4 +1,6 @@
-# Flickr Task App (Created as part of Technical Interview) by Matt Pilcher
+# Flickr Task App (Created as part of Technical Interview 2017) by Matt Pilcher
+
+- DEMO - http://mattpilcher.co.uk/sites/flickr-task/
 
 To run the web app locally
 - clone from git
@@ -6,8 +8,6 @@ To run the web app locally
 - run "npm install --save bootstrap@4.0.0-alpha.6" (Bootstrap is overwritten otherwise unfortunately have run out of time this weekend to debug this further)
 - run "webpack" to generate production code
 - run "webpack-dev-server" for local development server
-
-DEMO - www.mattpilcher.co.uk/sites/flickr
 
 ##### Features of the application
 - Displaying Flickr public images
