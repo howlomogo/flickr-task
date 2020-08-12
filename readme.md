@@ -1,6 +1,6 @@
-# Flickr Task App (Created as part of Technical Interview 2017) by Matt Pilcher
+### DEMO - http://mattpilcher.co.uk/sites/flickr-task/
 
-- DEMO - http://mattpilcher.co.uk/sites/flickr-task/
+# Flickr Task App (Created as part of Technical Interview 2017) by Matt Pilcher
 
 To run the web app locally
 - clone from git
